@@ -1,4 +1,5 @@
 import openai
+import json
 
 with open("key.txt", "r") as k:
     key = k.readline()
@@ -6,7 +7,13 @@ with open("key.txt", "r") as k:
 openai.api_key = key
 
 def prompt(message):
-    messages = []
+    config = json.loads("gpt_config.json")
+    role = config["role"]
+    model = config["model"]
+    print(role, model)
+    return 0
+
+    """messages = []
 
     #message = input("Print your prompt: ")
     messages.append({"role": "user", "content": message})
@@ -16,4 +23,4 @@ def prompt(message):
     reply = chat.choices[0].message.content
 
     #print(f"ChatGPT: {reply}")
-    return reply
+    return reply"""
